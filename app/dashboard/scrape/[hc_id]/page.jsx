@@ -1,6 +1,6 @@
 "use client";
 import { useSession } from "next-auth/react";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { get, post } from "../../../../lib/api";
 import CustomTable from "../../../../components/table/TableCustom";
 import { columns_groups, visible_columns_groups } from "../../../../lib/data";
@@ -31,6 +31,12 @@ export default function page({ params }) {
   const abs_loading = () => {
     // console.log(!isLoading);
     setIsLoading((prev) => !prev);
+  };
+
+  const send_message = () => {
+    post(`message`).then((res) => {
+      console.log(res);
+    });
   };
 
   const generate_category = () => {
@@ -85,6 +91,17 @@ export default function page({ params }) {
     <div className="flex flex-col space-y-2">
       <div className="flex justify-between">
         <h1 className="text-2xl font-bold">Keyword: {data?.keyword} </h1>
+        <Button
+          color="primary"
+          variant="bordered"
+          size="sm"
+          radius="sm"
+          // startContent={<AIIcon />}
+          onClick={send_message}
+        >
+          <span className="text-white">AI MESSAGE</span>
+        </Button>
+
         <Button
           color="primary"
           variant="bordered"

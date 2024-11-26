@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -6,6 +7,7 @@ import {
   NavbarBrand,
   NavbarItem,
   NavbarMenuItem,
+  
 } from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
@@ -26,8 +28,21 @@ import {
   Logo,
 } from "@/components/icons";
 
-export const Navbar = () => {
+const tabs = [
+  {
+    id: "nav_auto_post",
+    label: "Auto Post",
+    href: "/dashboard/auto_post",
+  },
+  {
+    id: "nav_history_scrape",
+    label: "History scrape",
+    href: "/dashboard/scrape",
+  }
 
+];
+export const Navbar = () => {
+  
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -39,6 +54,33 @@ export const Navbar = () => {
         </NavbarBrand>
 
       </NavbarContent>
+
+      <NavbarContent className="basis-2/5 sm:basis-full" justify="start">
+        {tabs.map((tab) => ( 
+          <NavbarItem key={tab.id}>
+            <Link
+              href={tab.href}
+              color="foreground"
+              size="lg"
+              className={clsx(
+                "px-4 py-2",
+                linkStyles,
+                "hover:bg-default-100",
+                "rounded-md",
+                "transition-colors",
+                "duration-200",
+                "ease-in-out",
+                "text-sm",
+                "font-semibold",
+                "cursor-pointer",
+              )}
+            >
+              {tab.label}
+            </Link>
+          </NavbarItem>
+        ))}
+
+      </NavbarContent>  
 
       <NavbarContent
         className="hidden sm:flex basis-1/5 sm:basis-full"

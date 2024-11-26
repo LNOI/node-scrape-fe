@@ -114,10 +114,6 @@ export default function CustomTable({
     }
   }, []);
 
-  useEffect(() => {
-    console.log("isLoading", isLoading);
-  }, [isLoading]);
-
   return (
     <Table
       aria-label="Example table with dynamic content"
