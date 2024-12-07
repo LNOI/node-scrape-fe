@@ -1,7 +1,14 @@
 'use client';
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
-import { Select, SelectItem } from "@nextui-org/select";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+} from "@nextui-org/react";
+import { IoLanguage } from "react-icons/io5"; // Import icon từ react-icons
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
@@ -9,8 +16,8 @@ export default function LanguageSwitcher() {
   const pathname = usePathname();
 
   const languages = [
-    { label: 'Tiếng Việt', value: 'vi' },
-    { label: 'English', value: 'en' },
+    { label: 'Tiếng Việt', value: 'vi', icon: '🇻🇳' },
+    { label: 'English', value: 'en', icon: '🇬🇧' },
   ];
 
   const handleChange = (value: string) => {
@@ -20,16 +27,32 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <Select 
-      defaultSelectedKeys={[locale]}
-      onChange={(e) => handleChange(e.target.value)}
-      className="w-32"
-    >
-      {languages.map((lang) => (
-        <SelectItem key={lang.value} value={lang.value}>
-          {lang.label}
-        </SelectItem>
-      ))}
-    </Select>
+    <Dropdown placement="bottom-end">
+      <DropdownTrigger>
+        <Button
+          variant="light"
+          size="sm"
+          isIconOnly
+          className="text-default-500 hover:text-primary h-auto"
+        >
+          <IoLanguage className="w-5 h-5" />
+        </Button>
+      </DropdownTrigger>
+      <DropdownMenu
+        aria-label="Language selection"
+        selectionMode="single"
+        selectedKeys={[locale]}
+        onSelectionChange={(keys) => {
+          const selected = Array.from(keys)[0] as string;
+          handleChange(selected);
+        }}
+      >
+        {languages.map((lang) => (
+          <DropdownItem key={lang.value} startContent={<span>{lang.icon}</span>}>
+            {lang.label}
+          </DropdownItem>
+        ))}
+      </DropdownMenu>
+    </Dropdown>
   );
 } 

@@ -51,5 +51,23 @@
       "connect": "Connect with us"
     },
     "copyright": "© {year} Social Listening. All rights reserved."
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "welcomeBack": "Welcome Back",
+    "createAccount": "Create Account",
+    "loginSubtitle": "Sign in to continue",
+    "registerSubtitle": "It only takes a minute",
+    "continueWithGoogle": "Continue with Google",
+    "or": "or",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "loginError": "Invalid email or password",
+    "passwordMismatch": "Passwords do not match",
+    "generalError": "Something went wrong. Please try again"
   }
 } 

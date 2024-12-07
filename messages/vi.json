@@ -51,5 +51,23 @@
       "connect": "Kết nối với chúng tôi"
     },
     "copyright": "© {year} Social Listening. Tất cả quyền được bảo lưu."
+  },
+  "auth": {
+    "signIn": "Đăng nhập",
+    "signUp": "Đăng ký",
+    "signOut": "Đăng xuất",
+    "welcomeBack": "Chào mừng trở lại",
+    "createAccount": "Tạo tài khoản mới",
+    "loginSubtitle": "Đăng nhập để tiếp tục",
+    "registerSubtitle": "Chỉ mất vài phút để tạo tài khoản",
+    "continueWithGoogle": "Tiếp tục với Google",
+    "or": "hoặc",
+    "password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "noAccount": "Chưa có tài khoản?",
+    "haveAccount": "Đã có tài khoản?",
+    "loginError": "Email hoặc mật khẩu không đúng",
+    "passwordMismatch": "Mật khẩu không khớp",
+    "generalError": "Đã có lỗi xảy ra. Vui lòng thử lại"
   }
 } 

@@ -1,11 +1,14 @@
 "use client";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
-import { get, post } from "../../../../lib/api";
-import CustomTable from "../../../../components/table/TableCustom";
-import { columns_groups, visible_columns_groups } from "../../../../lib/data";
+import { get, post } from "../../../../../lib/api";
+import CustomTable from "../../../../../components/table/TableCustom";
+import {
+  columns_groups,
+  visible_columns_groups,
+} from "../../../../../lib/data";
 import { Button } from "@nextui-org/button";
-import { AIIcon } from "../../../../lib/icons";
+import { AIIcon } from "../../../../../lib/icons";
 
 export default function page({ params }) {
   const { data: session, status, update } = useSession();

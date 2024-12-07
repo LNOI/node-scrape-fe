@@ -5,9 +5,9 @@ import TableCustom from "@/components/table/TableCustom";
 import {
   columns_history_scrape,
   visible_columns_history_scrape,
-} from "../../../lib/data";
+} from "../../../../lib/data";
 import { Input, Button } from "@nextui-org/react";
-import { fetchGet, fetchPost } from "../../../lib/api";
+import { fetchGet, fetchPost } from "../../../../lib/api";
 export default function Dashboard() {
   const [setting, setSetting] = useState({});
   const [keyword, setKeyword] = useState("");
