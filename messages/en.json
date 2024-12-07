@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "title": "Smart Automated Marketing Solution",
+    "subtitle": "Optimize your marketing strategy with advanced automation technology",
+    "tryFree": "Try for free",
+    "learnMore": "Learn more"
+  },
+  "features": {
+    "title": "Key Features",
+    "dataCollection": {
+      "title": "Smart Data Collection",
+      "description": "Collect data from Facebook, Instagram, TikTok based on search keywords. Analyze and filter data accurately."
+    },
+    "automation": {
+      "title": "Interaction Automation",
+      "description": "Automatically post, comment and reply to messages. Optimize time and increase interaction efficiency."
+    },
+    "customerSearch": {
+      "title": "Customer Search",
+      "description": "Automatically search and classify potential customers. Increase sales opportunities and business development."
+    }
+  },
+  "cta": {
+    "title": "Ready to optimize your marketing?",
+    "subtitle": "Start today and experience the power of automation",
+    "button": "Get Started"
+  },
+  "footer": {
+    "about": {
+      "title": "About Us",
+      "company": "SOCIAL LISTENING",
+      "address": "123 ABC Street, XYZ District\nHo Chi Minh City, Vietnam",
+      "contact": "Email: contact@sociallistening.com\nHotline: 1900 xxxx"
+    },
+    "policies": {
+      "title": "Policies",
+      "terms": "Terms of Use",
+      "privacy": "Privacy Policy",
+      "refund": "Refund Policy",
+      "service": "Service Terms"
+    },
+    "support": {
+      "title": "Support",
+      "pricing": "Service Pricing",
+      "center": "Support Center",
+      "faq": "FAQ",
+      "contact": "Contact"
+    },
+    "payment": {
+      "title": "Payment Methods",
+      "connect": "Connect with us"
+    },
+    "copyright": "© {year} Social Listening. All rights reserved."
+  }
+} 

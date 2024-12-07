@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "title": "Giải pháp Marketing Tự động Thông minh",
+    "subtitle": "Tối ưu hóa chiến lược marketing của bạn với công nghệ tự động hóa tiên tiến",
+    "tryFree": "Dùng thử miễn phí",
+    "learnMore": "Tìm hiểu thêm"
+  },
+  "features": {
+    "title": "Tính năng nổi bật",
+    "dataCollection": {
+      "title": "Thu thập dữ liệu thông minh",
+      "description": "Thu thập dữ liệu từ Facebook, Instagram, TikTok theo từ khóa tìm kiếm. Phân tích và lọc dữ liệu chính xác."
+    },
+    "automation": {
+      "title": "Tự động hóa tương tác",
+      "description": "Tự động đăng bài, bình luận và trả lời tin nhắn. Tối ưu thời gian và tăng hiệu quả tương tác."
+    },
+    "customerSearch": {
+      "title": "Tìm kiếm khách hàng",
+      "description": "Tự động tìm kiếm và phân loại khách hàng tiềm năng. Tăng cơ hội bán hàng và phát triển kinh doanh."
+    }
+  },
+  "cta": {
+    "title": "Sẵn sàng tối ưu hóa marketing của bạn?",
+    "subtitle": "Bắt đầu ngay hôm nay và trải nghiệm sức mạnh của tự động hóa",
+    "button": "Bắt đầu ngay"
+  },
+  "footer": {
+    "about": {
+      "title": "Về chúng tôi",
+      "company": "SOCIAL LISTENING",
+      "address": "123 Đường ABC, Quận XYZ\nTP. Hồ Chí Minh, Việt Nam",
+      "contact": "Email: contact@sociallistening.com\nHotline: 1900 xxxx"
+    },
+    "policies": {
+      "title": "Chính sách",
+      "terms": "Điều khoản sử dụng",
+      "privacy": "Chính sách bảo mật",
+      "refund": "Chính sách hoàn tiền",
+      "service": "Điều khoản dịch vụ"
+    },
+    "support": {
+      "title": "Hỗ trợ",
+      "pricing": "Bảng giá dịch vụ",
+      "center": "Trung tâm hỗ trợ",
+      "faq": "Câu hỏi thường gặp",
+      "contact": "Liên hệ"
+    },
+    "payment": {
+      "title": "Phương thức thanh toán",
+      "connect": "Kết nối với chúng tôi"
+    },
+    "copyright": "© {year} Social Listening. Tất cả quyền được bảo lưu."
+  }
+} 

@@ -27,6 +27,7 @@ import {
   SearchIcon,
   Logo,
 } from "@/components/icons";
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 const tabs = [
   {
@@ -89,6 +90,7 @@ export const Navbar = () => {
         <NavbarItem className="hidden md:flex gap-2">
 
           <ThemeSwitch />
+          <LanguageSwitcher />
         </NavbarItem>
         {/* <NavbarItem className="hidden md:flex">
           <Button
@@ -109,6 +111,7 @@ export const Navbar = () => {
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <ThemeSwitch />
+        <LanguageSwitcher />
         <NavbarMenuToggle />
       </NavbarContent>
 

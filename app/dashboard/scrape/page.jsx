@@ -2,17 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import TableCustom from "@/components/table/TableCustom";
-import { useSession } from "next-auth/react";
-import { get } from "@/lib/api";
 import {
   columns_history_scrape,
   visible_columns_history_scrape,
 } from "../../../lib/data";
 import { Input, Button } from "@nextui-org/react";
-import { post } from "../../../lib/api";
-
+import { fetchGet, fetchPost } from "../../../lib/api";
 export default function Dashboard() {
-  const { data: session, status, update } = useSession();
   const [setting, setSetting] = useState({});
   const [keyword, setKeyword] = useState("");
   const [num_groups, setNum_groups] = useState(0);
@@ -32,24 +28,27 @@ export default function Dashboard() {
   const [isNew, setIsNew] = React.useState(false);
   const [ws_message, setWs_message] = React.useState({});
 
+  const fetchScrapeHistory = async () => {
+    try {
+      setIsLoading(true);
+      fetchGet(`history-scrape`, {
+        page: paginationModel.page + 1,
+        page_size: paginationModel.pageSize,
+      }).then((res) => {
+        setHc_data(res.data.items);
+        setHasNextPage(res.data.total === res.data.page_size);
+      });
+    } catch (error) {
+      console.error("Error fetching scrape history:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (hc_data.length === 0) {
       setIsLoading(true);
-      get(`history-scrape`, {
-        page: paginationModel.page + 1,
-        page_size: paginationModel.pageSize,
-      })
-        .then((res) => {
-          // console.log(res.data.items);
-          setHc_data(res.data.items);
-          setHasNextPage(res.data.total === res.data.page_size);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
+      fetchScrapeHistory();
     }
   }, []);
 
@@ -63,7 +62,7 @@ export default function Dashboard() {
       return;
     }
 
-    post(`history-scrape`, {
+    fetchPost(`history-scrape`, {
       keyword: keyword,
       num_groups: num_groups,
       num_posts: num_posts,

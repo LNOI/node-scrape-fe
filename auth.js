@@ -1,6 +1,5 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-
 import { Pool } from "pg";
 import PostgresAdapter from "@/lib/adapter";
 
@@ -13,8 +12,6 @@ export const {
   const pool = new Pool({ connectionString: process.env.DATABASE_URL });
   return {
     adapter: PostgresAdapter(pool),
-    // Custom cookie configuration
-
     providers: [
       Google({
         authorization: {
@@ -25,16 +22,6 @@ export const {
         },
       }),
     ],
-    cookies: {
-      sessionToken: {
-        name: "authjs.session-token",
-        options: {
-          httpOnly: true,
-          secure: process.env.NODE_ENV === "production", // Disable secure in development
-          sameSite: "lax",
-        },
-      },
-    },
-    debug: true,
+    // debug: true,
   };
 });
