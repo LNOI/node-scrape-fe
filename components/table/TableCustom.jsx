@@ -107,6 +107,38 @@ export default function CustomTable({
         return <span>{cellValue}</span>;
       case "comments":
         return <span>{cellValue}</span>;
+      case "status":
+        return (
+          <Chip
+            size="sm"
+            color={(() => {
+              switch (cellValue) {
+                case "completed":
+                  return "success";
+                case "pending":
+                  return "warning";
+                case "failed":
+                  return "danger";
+                default:
+                  return "default";
+              }
+            })()}
+            variant="flat"
+          >
+            {(() => {
+              switch (cellValue) {
+                case "completed":
+                  return "Hoàn thành";
+                case "pending":
+                  return "Đang xử lý";
+                case "failed":
+                  return "Thất bại";
+                default:
+                  return "Không xác định";
+              }
+            })()}
+          </Chip>
+        );
       case "created_at":
         return <span>{ConvertHummanDateTime(cellValue)}</span>;
       default:

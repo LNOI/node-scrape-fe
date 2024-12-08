@@ -4,7 +4,6 @@ import { button as buttonStyles } from "@nextui-org/theme";
 import { Card, CardBody } from "@nextui-org/card";
 import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 import { BsRobot, BsSearch, BsDatabase } from "react-icons/bs";
-import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default function Home() {
   const t = useTranslations();
