@@ -12,6 +12,7 @@ import { fetchPost, fetchGet } from "@/lib/api";
 import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell } from "@nextui-org/table";
 import { Spinner } from "@nextui-org/spinner";
 import TableCustom from "@/components/table/TableCustom";
+import { useSession } from 'next-auth/react';
 
 interface ScrapingConfig {
   keywords: string;
@@ -41,16 +42,24 @@ export default function SearchClient() {
   const [isLoading, setIsLoading] = useState(false);
   const [history, setHistory] = useState<ScrapeHistory[]>([]);
   const [loadingHistory, setLoadingHistory] = useState(true);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
+  const { data: session, status } = useSession();
+  const pageSize = 15;
 
   useEffect(() => {
     fetchScrapeHistory();
-  }, []);
+  }, [page]);
 
-  const fetchScrapeHistory = async () => {
+  const fetchScrapeHistory = async (currentPage = page) => {
+    if (!session) return;
     try {
-      const data = await fetchGet("history-scrape");
-      console.log(data?.data?.items);
-      setHistory(data?.data?.items);
+      const data = await fetchGet("history-scrape", {
+        page: currentPage,
+        page_size: pageSize,
+      });
+      setHistory(data?.data?.items || []);
+      setTotal(data?.data?.total || 0);
     } catch (error) {
       toast.error("Không thể tải lịch sử thu thập");
     } finally {
@@ -59,6 +68,7 @@ export default function SearchClient() {
   };
 
   const handleStartScraping = async () => {
+    if (!session) return;
     if (!keywords.trim()) {
       toast.error("Vui lòng nhập từ khóa tìm kiếm");
       return;
@@ -139,6 +149,10 @@ export default function SearchClient() {
     "status",
   ];
 
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
+
   return (
     <div className="space-y-6">
       {/* Từ khóa tìm kiếm */}
@@ -173,8 +187,8 @@ export default function SearchClient() {
                   <p className="text-sm mb-2">Số nhóm tối đa</p>
                   <Slider 
                     size="sm"
-                    step={10}
-                    maxValue={200}
+                    step={1}
+                    maxValue={100}
                     minValue={0}
                     value={maxGroups}
                     onChange={(value) => setMaxGroups(value as number)}
@@ -182,8 +196,10 @@ export default function SearchClient() {
                     showSteps={true}
                     marks={[
                       { value: 0, label: "0" },
+                      {value:25,label:"25"},
+                      {value:50,label:"50"},
+                      {value:75,label:"75"},
                       { value: 100, label: "100" },
-                      { value: 200, label: "200" },
                     ]}
                   />
                   <p className="text-small text-default-500 mt-1">
@@ -195,8 +211,8 @@ export default function SearchClient() {
                   <p className="text-sm mb-2">Số bài viết/nhóm</p>
                   <Slider 
                     size="sm"
-                    step={10}
-                    maxValue={500}
+                    step={1}
+                    maxValue={100}
                     minValue={0}
                     value={maxPosts}
                     onChange={(value) => setMaxPosts(value as number)}
@@ -204,8 +220,10 @@ export default function SearchClient() {
                     showSteps={true}
                     marks={[
                       { value: 0, label: "0" },
-                      { value: 250, label: "250" },
-                      { value: 500, label: "500" },
+                      {value:25,label:"25"},
+                      {value:50,label:"50"},
+                      {value:75,label:"75"},
+                      { value: 100, label: "100" },
                     ]}
                   />
                   <p className="text-small text-default-500 mt-1">
@@ -294,6 +312,10 @@ export default function SearchClient() {
           visible_columns={visible_columns}
           rows={history}
           isLoading={loadingHistory}
+          page={page}
+          total={total}
+          pageSize={pageSize}
+          onPageChange={handlePageChange}
         />
       </div>
 

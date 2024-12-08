@@ -68,6 +68,8 @@
     "haveAccount": "Already have an account?",
     "loginError": "Invalid email or password",
     "passwordMismatch": "Passwords do not match",
-    "generalError": "Something went wrong. Please try again"
+    "generalError": "Something went wrong. Please try again",
+    "accessDenied": "Access Denied",
+    "loginRequired": "Please sign in or sign up to use this feature"
   }
 } 

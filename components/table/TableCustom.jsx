@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Table,
   TableHeader,
@@ -23,6 +23,10 @@ export default function CustomTable({
   visible_columns = [],
   rows = [],
   isLoading = false,
+  page = 1,
+  total = 0,
+  pageSize = 15,
+  onPageChange = () => {},
 }) {
   const headerColumns = React.useMemo(() => {
     return columns?.filter((column) =>
@@ -147,27 +151,48 @@ export default function CustomTable({
   }, []);
 
   return (
-    <Table
-      aria-label="Example table with dynamic content"
-      selectionMode="single"
-      onSelectionChange={(selected) => console.log(selected)}
-    >
-      <TableHeader columns={headerColumns}>
-        {(column) => <TableColumn key={column.uid}>{column.name}</TableColumn>}
-      </TableHeader>
-      <TableBody
-        items={rows}
-        loadingContent={<Spinner />}
-        loadingState={isLoading ? "loading" : "idle"}
+    <div className="flex flex-col gap-3">
+      <Table
+        aria-label="Example table with dynamic content"
+        bottomContent={
+          total > pageSize ? (
+            <div className="flex w-full justify-center">
+              <Pagination
+                isCompact
+                showControls
+                showShadow
+                color="primary"
+                page={page}
+                total={Math.ceil(total / pageSize)}
+                onChange={onPageChange}
+              />
+            </div>
+          ) : null
+        }
+        classNames={{
+          wrapper: "min-h-[222px]",
+        }}
       >
-        {(item) => (
-          <TableRow key={item.id} id={`row-${item.id}`}>
-            {(columnKey) => (
-              <TableCell>{renderCell(item, columnKey)}</TableCell>
-            )}
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+        <TableHeader columns={headerColumns}>
+          {(column) => (
+            <TableColumn key={column.uid}>{column.name}</TableColumn>
+          )}
+        </TableHeader>
+        <TableBody
+          items={rows}
+          loadingContent={<Spinner />}
+          loadingState={isLoading ? "loading" : "idle"}
+          emptyContent={isLoading ? " " : "Không có dữ liệu"}
+        >
+          {(item) => (
+            <TableRow key={item.id} id={`row-${item.id}`}>
+              {(columnKey) => (
+                <TableCell>{renderCell(item, columnKey)}</TableCell>
+              )}
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+    </div>
   );
 }

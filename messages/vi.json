@@ -68,6 +68,8 @@
     "haveAccount": "Đã có tài khoản?",
     "loginError": "Email hoặc mật khẩu không đúng",
     "passwordMismatch": "Mật khẩu không khớp",
-    "generalError": "Đã có lỗi xảy ra. Vui lòng thử lại"
+    "generalError": "Đã có lỗi xảy ra. Vui lòng thử lại",
+    "accessDenied": "Truy cập bị từ chối",
+    "loginRequired": "Vui lòng đăng nhập hoặc đăng ký để sử dụng tính năng này"
   }
 } 

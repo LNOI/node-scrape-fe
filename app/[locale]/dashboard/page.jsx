@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Select, SelectItem } from "@nextui-org/select";
 import { Card } from "@nextui-org/card";
 import { Button } from "@nextui-org/button";
+import { useSession } from "next-auth/react";
+import AuthOverlay from "@/components/AuthOverlay";
 import {
   FaFacebook,
   FaInstagram,
@@ -20,7 +22,6 @@ const SOCIAL_NETWORKS = [
     label: "Facebook",
     icon: <FaFacebook className="text-blue-600" />,
   },
-  // ... other networks
 ];
 
 const FEATURES_LIST = [
@@ -49,9 +50,11 @@ const FEATURES_LIST = [
 export default function Dashboard() {
   const [selectedNetwork, setSelectedNetwork] = useState("facebook");
   const [selectedFeature, setSelectedFeature] = useState("search");
+  const { data: session, status } = useSession();
 
   return (
-    <div className="h-full min-h-screen p-4">
+    <div className="h-full min-h-screen p-4 relative">
+      {!session && <AuthOverlay />}
       <div className="flex flex-col lg:flex-row gap-4 h-full">
         {/* Sidebar */}
         <div className="w-full lg:w-64 shrink-0">
